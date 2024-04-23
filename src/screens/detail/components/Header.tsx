@@ -18,7 +18,7 @@ export default function Header({onBackPress}: Props) {
       <View style={[style.headerAbsolute]}>
         <View style={[style.headerToolBar]}>
           <TouchableOpacity
-            style={{overflow: 'hidden', borderRadius: 16}}
+            style={[style.borderRadiusBlurViewInside]}
             onPress={() => (onBackPress ? onBackPress() : null)}>
             <BlurView blurAmount={10}>
               <Image
@@ -33,7 +33,7 @@ export default function Header({onBackPress}: Props) {
             style={[style.icon24, style.tintPrimary]}
           />
         </View>
-        <View style={[{overflow: 'hidden', borderRadius: 10}]}>
+        <View style={[style.borderRadiusBlurViewInside]}>
           <BlurView blurType="dark" blurAmount={10}>
             <View style={[style.authorWrapper]}>
               <Image source={IMAGES.avatar} style={[style.avatar]} />

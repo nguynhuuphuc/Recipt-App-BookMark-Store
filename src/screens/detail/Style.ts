@@ -56,4 +56,8 @@ export const style = StyleSheet.create({
     fontWeight: '500',
     color: COLORS.white,
   },
+  borderRadiusBlurViewInside: {
+    overflow: 'hidden',
+    borderRadius: 16,
+  },
 });
