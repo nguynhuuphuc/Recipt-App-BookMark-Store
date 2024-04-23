@@ -5,10 +5,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import {style} from './Style';
 import {OutlineButton, PrimaryButton} from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
-import {PropsPush, PropsRoute} from '../../navigation/TypeCheck';
+import {MainPush, PropsRoute} from '../../navigation/TypeCheck';
 
 export default function SplashScreen() {
-  const navigation = useNavigation<PropsPush>();
+  const navigation = useNavigation<MainPush>();
   const onPressLogin = () => {
     navigation.push(SCREENS.MAINSCREEN);
   };

@@ -5,10 +5,15 @@ import {SCREENS} from '../constant/Constant';
 type MainStackParams = {
   SPLASHSCREEN: undefined;
   MAINSCREEN: undefined;
+  DETAIL: undefined;
 };
 
-export type PropsPush = NativeStackNavigationProp<
+export type MainPush = NativeStackNavigationProp<
   MainStackParams,
   SCREENS.MAINSCREEN
+>;
+export type DetailPush = NativeStackNavigationProp<
+  MainStackParams,
+  SCREENS.DETAIL
 >;
 export type PropsRoute = RouteProp<MainStackParams, SCREENS.MAINSCREEN>;
