@@ -3,8 +3,17 @@ import {COLORS, FONTS, SIZES} from '../../constant/Constant';
 import {Icon} from 'react-native-vector-icons/Icon';
 
 export const style = StyleSheet.create({
+  colorBlack: {
+    color: COLORS.black,
+  },
   colorGray: {
     color: COLORS.gray,
+  },
+  textAlignRight: {
+    textAlign: 'right',
+  },
+  flex_end: {
+    alignSelf: 'flex-end',
   },
   icon32: {
     width: 32,
@@ -43,10 +52,16 @@ export const style = StyleSheet.create({
     // backgroundColor: 'red',
   },
   avatar: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: 42,
+    height: 42,
+    borderRadius: 24,
     marginEnd: SIZES.marginSmaller,
+  },
+  avatarLeft: {
+    width: 42,
+    height: 42,
+    borderRadius: 24,
+    marginLeft: -SIZES.marginSmall,
   },
   authorMore: {
     position: 'absolute',
@@ -59,5 +74,31 @@ export const style = StyleSheet.create({
   borderRadiusBlurViewInside: {
     overflow: 'hidden',
     borderRadius: 16,
+  },
+  bodyContainer: {
+    padding: SIZES.paddingSmall,
+  },
+  bTitleWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  bTitleText: {
+    flex: 1,
+    fontSize: FONTS.fontMedium,
+    fontWeight: '500',
+  },
+  bSubText: {
+    color: COLORS.dark_gray,
+    fontSize: FONTS.fontSmall,
+    alignSelf: 'flex-end',
+  },
+  bIngredientText: {
+    marginTop: SIZES.marginMedium,
+    fontWeight: '700',
+  },
+  bIngredientItems: {
+    marginTop: SIZES.marginSmall,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

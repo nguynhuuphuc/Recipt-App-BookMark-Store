@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {style} from './Style';
 
 type Props = {
+  id: string;
   url: string;
   category: string;
   title: string;
@@ -17,7 +18,7 @@ export default function ItemFood(props: Props) {
     <TouchableOpacity
       style={[style.marginEndSmall]}
       onPress={() => {
-        props.onPress != null ? props.onPress() : null;
+        props.onPress != null ? props.onPress(props.id) : null;
       }}>
       <Image
         source={{uri: props.url}}

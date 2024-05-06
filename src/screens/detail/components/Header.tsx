@@ -1,18 +1,58 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ToastAndroid} from 'react-native';
 import React from 'react';
-import {COLORS, ICONS, IMAGES, NAME_ICONS} from '../../../constant/Constant';
+import {
+  COLORS,
+  ICONS,
+  IMAGES,
+  NAME_ICONS,
+  STORAGE_KEY,
+} from '../../../constant/Constant';
 import {style} from '../Style';
 import {BlurView} from '@react-native-community/blur';
+import storage from '../../../storage/storage';
+import Toast from 'react-native-toast-message';
+import {BookmarkType} from '../../../api/Type';
 
 type Props = {
+  url?: string;
   onBackPress?: Function;
+  title?: string;
+  id?: string;
 };
 
-export default function Header({onBackPress}: Props) {
+export default function Header({url, onBackPress, id, title}: Props) {
+  const onBookMark = () => {
+    const dataBookmark = {
+      id,
+      title,
+      url,
+    };
+    storage
+      .load({key: STORAGE_KEY.bookmark})
+      .then((data: BookmarkType[]) => {
+        const filterData = data.filter(item => item.id == id);
+        if (filterData.length > 0) return;
+        const newData = [...data, dataBookmark];
+        storage.save({
+          key: STORAGE_KEY.bookmark,
+          data: newData,
+        });
+      })
+      .catch(reason => {
+        storage.save({
+          key: STORAGE_KEY.bookmark,
+          data: [dataBookmark],
+        });
+      });
+    Toast.show({
+      type: 'success',
+      text1: 'Bookmark Success',
+    });
+  };
   return (
     <View>
       <Image
-        source={IMAGES.backgroundSplashScreen}
+        source={url != null ? {uri: url} : IMAGES.backgroundSplashScreen}
         style={{width: '100%', height: 300}}
       />
       <View style={[style.headerAbsolute]}>
@@ -28,10 +68,12 @@ export default function Header({onBackPress}: Props) {
             </BlurView>
           </TouchableOpacity>
 
-          <Image
-            source={ICONS.bookMark}
-            style={[style.icon24, style.tintPrimary]}
-          />
+          <TouchableOpacity onPress={onBookMark}>
+            <Image
+              source={ICONS.bookMark}
+              style={[style.icon24, style.tintPrimary]}
+            />
+          </TouchableOpacity>
         </View>
         <View style={[style.borderRadiusBlurViewInside]}>
           <BlurView blurType="dark" blurAmount={10}>

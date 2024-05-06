@@ -72,3 +72,7 @@ export const FONTS = {
   fontWeightLarge: '700',
   fontWeightMedium: '500',
 };
+
+export const STORAGE_KEY = {
+  bookmark: 'BOOKMARK',
+};

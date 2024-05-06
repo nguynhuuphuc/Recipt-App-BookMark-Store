@@ -10,8 +10,8 @@ import {SCREENS} from '../../../constant/Constant';
 export default function Trending() {
   const navigation = useNavigation<DetailPush>();
   const {data, isLoading} = useGetTrendingMealQuery();
-  const onSendToDetailPage = () => {
-    navigation.push(SCREENS.DETAIL);
+  const onSendToDetailPage = (id: string) => {
+    navigation.push(SCREENS.DETAIL, {id});
   };
   return (
     <View style={[style.cTrending]}>
@@ -21,6 +21,7 @@ export default function Trending() {
         data={data?.meals ?? []}
         renderItem={({item}) => (
           <ItemFood
+            id={item.idMeal}
             onPress={onSendToDetailPage}
             url={item.strMealThumb}
             category={item.strCategory}

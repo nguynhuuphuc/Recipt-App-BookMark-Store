@@ -10,9 +10,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {style} from './Style';
 import TabIcon from '../components/TabIcon';
+import {AppDispatch} from '../redux/Store';
+import {useDispatch} from 'react-redux';
+import {bookmarkMeal} from '../screens/bookmark/BookmarkReducer';
 
 const Tab = createBottomTabNavigator();
 export default function MainScreen() {
+  const dispatch: AppDispatch = useDispatch();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -67,6 +71,12 @@ export default function MainScreen() {
               color={color}
             />
           ),
+        }}
+        listeners={{
+          tabPress: ({defaultPrevented}) => {
+            defaultPrevented;
+            dispatch(bookmarkMeal());
+          },
         }}
       />
       <Tab.Screen
